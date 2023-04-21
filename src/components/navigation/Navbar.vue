@@ -1,10 +1,10 @@
 <template>
     <div class="w-full flex justify-between h-24 items-center">
         <div class="ml-10">
-            <img class="w-10 h-10" src="../../assets/icons/shopping-bag.png" alt="shopping-bag">
+            <img class="w-12 h-12 cursor-pointer hover:shadow-xl rounded-full p-1" src="../../assets/icons/shopping-bag.png" alt="shopping-bag">
         </div>
         <div class="mr-10">
-            <Button :text="'Twoje zamówienia'" />
+            <Button :text="'Twoje Zamówienia'" />
         </div>
     </div>
 </template>
