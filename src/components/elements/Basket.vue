@@ -13,7 +13,7 @@
                          <p class="font-thin text-xl">zł</p>
                     </div>
                     <div class="w-1/2 h-full flex flex-col items-center justify-center">
-                         <Button  :text="'Zapłać'"/>
+                         <Button @click="$emit('close')" :text="'Zapłać'" :href="'order'"/>
                     </div>
                </div>
           </div>
