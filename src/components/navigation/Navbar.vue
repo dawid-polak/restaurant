@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex justify-between h-24 items-center absolute">
+    <div class="w-full flex justify-between h-24 items-center fixed z-50 bg-white">
         <div class="ml-10">
             <img class="w-12 h-12 cursor-pointer hover:shadow-xl rounded-full p-1" src="../../assets/icons/shopping-bag.png" alt="shopping-bag">
         </div>

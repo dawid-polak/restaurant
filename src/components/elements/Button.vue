@@ -1,7 +1,7 @@
 <template>
-    <!-- <router-link :to="{ name: href }"> -->
+    <router-link :to="{ name: href }">
         <div class="bg-black rounded-full py-2 text-white px-5 flex items-center justify-center font-thin hover:shadow-xl cursor-pointer text-lg">{{ text }}</div>
-    <!-- </router-link> -->
+    </router-link>
 </template>
 
 <script setup lang="ts">
