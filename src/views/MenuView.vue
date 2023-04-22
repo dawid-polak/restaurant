@@ -14,21 +14,24 @@
                </div>
           </div>
           <div class="w-full z-[-10] bottom-0 h-full mt-20 flex flex-wrap justify-center mb-10">
-               <DinnerList v-for="item in dataFromServer" :data="item" />
+               <DinnerList v-for="item in dataFromServer" :data="item" @close="handleShowAlert"/>
           </div>
           <Footer />
-     </div>
+        </div>
+        <Alert v-if="showAlert"/>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import DinnerList from "@/components/menuViews/DinnerList.vue";
 import Footer from "@/components/navigation/Footer.vue";
+import Alert from "@/components/elements/Alert.vue";
 
 import axios from "axios";
 
 const navbarMenuShow = ref(false);
 const dataFromServer = ref();
+const showAlert = ref(false);
 
 onMounted(() => {
      downloadData();
@@ -65,6 +68,15 @@ const scrollToTop = () => {
           behavior: "smooth",
      });
 };
+
+//function show alert when the product added to basket 
+const handleShowAlert = () => {
+    showAlert.value = false;
+    showAlert.value = true;
+    setTimeout(() => {
+        showAlert.value = false;
+    }, 2000)
+}
 </script>
 
 <style scoped></style>
