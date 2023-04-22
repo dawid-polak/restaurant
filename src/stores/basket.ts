@@ -25,18 +25,42 @@ export const useBasket = defineStore("basket", {
      actions: {
           //add product to products
           addProduct(nameValue: String, priceValue: Number, numberValue: Number) {
-               this.$state.products.push({
-                    name: nameValue,
-                    price: priceValue,
-                    numberOfProduct: numberValue,
-               });
+               let productExist;
+
+               if (this.$state.products.length === 0) {
+                    this.$state.products.push({
+                         name: nameValue,
+                         price: priceValue,
+                         numberOfProduct: numberValue,
+                    });
+                    productExist = true;
+               } else {
+                    this.$state.products.map((product) => {
+                         if (product.name === nameValue) {
+                              productExist = true;
+                              product.numberOfProduct++;
+                         } else {
+                              productExist = false;
+                         }
+                    });
+               }
+
+               if (!productExist) {
+                    this.$state.products.push({
+                         name: nameValue,
+                         price: priceValue,
+                         numberOfProduct: numberValue,
+                    });
+               }
           },
 
           //discount number of product
           discountProduct(nameProduct: String) {
                this.$state.products.forEach((product) => {
                     if (product.name === nameProduct) {
-                         product.numberOfProduct--;
+                         if (product.numberOfProduct !== 1) {
+                              product.numberOfProduct--;
+                         }
                     }
                });
           },
