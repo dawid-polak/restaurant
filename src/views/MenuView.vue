@@ -32,12 +32,14 @@ const dataFromServer = ref();
 
 onMounted(() => {
      downloadData();
+     scrollToTop();
 });
 
 //download data from server
 const downloadData = () => {
      axios.get("https://api.jsonbin.io/v3/b/6443cb76b89b1e22998f33c8").then((res) => {
           dataFromServer.value = res.data.record;
+          scrollToTop();
      });
 };
 
@@ -49,8 +51,18 @@ const selectProductsInMenu = (category: String) => {
           res.data.record.forEach((product: Object) => {
                if (product.type === category) {
                     dataFromServer.value.push(product);
+                    scrollToTop();
                }
           });
+     });
+};
+
+//function scroll to top
+const scrollToTop = () => {
+     window.scroll({
+          top: 0,
+          left: 0,
+          behavior: "smooth",
      });
 };
 </script>
