@@ -5,7 +5,7 @@
                <h4>39 zł</h4>
           </div>
           <p class="font-thin text-xs p-2">Tradycyjnie potrawy kuchni indyjskiej podawane są na Thali czyli metalowej tacy.</p>
-          <div @click="store.addProduct('TALERZE THALI', 39)" class="text-right underline pt-2 px-2 cursor-pointer">dodaj do koszyka</div>
+          <div @click="store.addProduct('TALERZE THALI', 40, 1)" class="text-right underline pt-2 px-2 cursor-pointer">dodaj do koszyka</div>
      </div>
 </template>
 

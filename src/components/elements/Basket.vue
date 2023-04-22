@@ -9,7 +9,7 @@
                </div>
                <div class="w-full flex my-10">
                     <div class="w-1/2 h-full flex flex-col items-center justify-center">
-                         <p class="font-light">łączna cena:</p>
+                         <p class="font-light">łączna cena: {{ store.calculateTotalPrice }}</p>
                          <p class="font-thin text-xl">zł</p>
                     </div>
                     <div class="w-1/2 h-full flex flex-col items-center justify-center">
