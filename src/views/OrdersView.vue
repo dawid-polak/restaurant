@@ -14,24 +14,7 @@
                               </tr>
                          </thead>
                          <tbody>
-                              <ItemList />
-                              <ItemList />
-                              <ItemList />
-
-                              <ItemList />
-                              <ItemList />
-                              <ItemList />
-                              <ItemList />
-
-                              <ItemList />
-
-                              <ItemList />
-                              <ItemList />
-                              <ItemList />
-
-                              <ItemList />
-
-
+                              <ItemList v-for="order in storeOrders.orders" :data="order" />
                          </tbody>
                     </table>
                </div>
@@ -42,6 +25,11 @@
 <script setup lang="ts">
 import ItemList from "@/components/ordersView/ItemList.vue";
 import Footer from "@/components/navigation/Footer.vue";
+
+import { useOrders } from '@/stores/orders';
+
+const storeOrders = useOrders();
+
 </script>
 
 <style scoped></style>

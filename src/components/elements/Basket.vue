@@ -13,7 +13,7 @@
                          <p class="font-thin text-xl">zł</p>
                     </div>
                     <div class="w-1/2 h-full flex flex-col items-center justify-center">
-                         <Button @click="$emit('close')" :text="'Zapłać'" :href="'order'" />
+                         <Button @click="$emit('close'), storeOrders.addOrder(store.products, store.calculateTotalPrice)" :text="'Zapłać'" :href="'order'" />
                     </div>
                </div>
           </div>
@@ -24,8 +24,11 @@
 import Button from "./Button.vue";
 import BasketItem from "./BasketItem.vue";
 import { useBasket } from "@/stores/basket";
+import { useOrders } from "@/stores/orders";
 
 const store = useBasket();
+const storeOrders = useOrders();
+
 </script>
 
 <style scoped lang="scss">

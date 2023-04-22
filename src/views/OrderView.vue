@@ -21,7 +21,7 @@
 
 <script setup lang="ts">
 import Footer from '@/components/navigation/Footer.vue';
-
+const props = defineProps(['data']);
 </script>
 
 <style scoped>
