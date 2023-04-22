@@ -4,40 +4,55 @@
                <p class="text-lg block">Głodny? Zobacz!</p>
                <h1 class="font-bold tracking-wider block">NASZE MENU</h1>
                <span class="bg-black w-24 h-[2px] mt-2 block m-auto"></span>
-               <img v-if="!navbarMenuShow" @click="navbarMenuShow = !navbarMenuShow"  class="bg-black rounded-full flex items-center justify-center w-10 mt-[13px] p-2 ml-5 sm:ml-32 cursor-pointer z-20 hover:shadow-xl absolute border" src="../assets/icons/menu.png" alt="menu" />
-               <img v-if="navbarMenuShow" @click="navbarMenuShow = !navbarMenuShow"  class="bg-black rounded-full flex items-center justify-center w-10 mt-[13px] p-2 ml-5 sm:ml-32 cursor-pointer z-20 hover:shadow-xl absolute border" src="../assets/icons/close.png" alt="close" />
-               <div :class="{ 'hidden': !navbarMenuShow }" class="flex w-full sm:justify-center items-center text-xl text-white bg-black overflow-scroll mt-[33px] z-20">
-                    <div class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">przystawki</div>
-                    <div class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">dania główne</div>
-                    <div class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">desery</div>
+               <img v-if="!navbarMenuShow" @click="navbarMenuShow = !navbarMenuShow" class="bg-black rounded-full flex items-center justify-center w-10 mt-[13px] p-2 ml-5 sm:ml-32 cursor-pointer z-20 hover:shadow-xl absolute border" src="../assets/icons/menu.png" alt="menu" />
+               <img v-if="navbarMenuShow" @click="navbarMenuShow = !navbarMenuShow" class="bg-black rounded-full flex items-center justify-center w-10 mt-[13px] p-2 ml-5 sm:ml-32 cursor-pointer z-20 hover:shadow-xl absolute border" src="../assets/icons/close.png" alt="close" />
+               <div :class="{ hidden: !navbarMenuShow }" class="flex w-full sm:justify-center items-center text-xl text-white bg-black overflow-scroll mt-[33px] z-20">
+                    <div @click="downloadData" class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">menu</div>
+                    <div @click="selectProductsInMenu('dinner')" class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">obiady</div>
+                    <div @click="selectProductsInMenu('mainCourse')" class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">dania główne</div>
+                    <div @click="selectProductsInMenu('desert')" class="py-4 min-w-[200px] cursor-pointer hover:text-[#EFE3D3]">desery</div>
                </div>
           </div>
-          <div class="w-full z-[-10] bottom-0 h-full mt-10 flex flex-wrap justify-center mb-10">
-               <DinnerList />
-               <DinnerList />
-
-               <DinnerList />
-               <DinnerList />
-
-               <DinnerList />
-               <DinnerList />
-               <DinnerList />
-               <DinnerList />
-               <DinnerList />
-               <DinnerList />
-               <DinnerList />
-               <DinnerList />
+          <div class="w-full z-[-10] bottom-0 h-full mt-20 flex flex-wrap justify-center mb-10">
+               <DinnerList v-for="item in dataFromServer" :data="item" />
           </div>
           <Footer />
      </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onMounted } from "vue";
 import DinnerList from "@/components/menuViews/DinnerList.vue";
 import Footer from "@/components/navigation/Footer.vue";
 
-const navbarMenuShow = ref(false)
+import axios from "axios";
+
+const navbarMenuShow = ref(false);
+const dataFromServer = ref();
+
+onMounted(() => {
+     downloadData();
+});
+
+//download data from server
+const downloadData = () => {
+     axios.get("https://api.jsonbin.io/v3/b/6443cb76b89b1e22998f33c8").then((res) => {
+          dataFromServer.value = res.data.record;
+     });
+};
+
+//select products
+//in json file exist 3 categories: dinner | mainCourse | desert
+const selectProductsInMenu = (category: String) => {
+     axios.get("https://api.jsonbin.io/v3/b/6443cb76b89b1e22998f33c8").then((res) => {
+          dataFromServer.value = [];
+          res.data.record.forEach((product: Object) => {
+               if (product.type === category) {
+                    dataFromServer.value.push(product);
+               }
+          });
+     });
+};
 </script>
 
 <style scoped></style>
