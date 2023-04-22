@@ -6,7 +6,7 @@
             <p class="font-bold">4574</p>
         </div>
         <div>
-            <h1 class="text-2xl text-green-500 p-5 text-center">Zostało pomyślnie zrealizowne</h1>
+            <h1 class="text-2xl text-green-500 p-5 text-center font-bold">Zostało pomyślnie zrealizowne!</h1>
             <p></p>
             <p class="text-center"> Dziękujemy za zakupy w naszej restaucaji. <br> Zapraszamy ponownie!  <br> <span class="font-bold">Zespół XYZ</span></p>
         </div>

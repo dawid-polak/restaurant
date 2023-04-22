@@ -4,7 +4,7 @@
             <img @click="showBasket = !showBasket" class="w-12 h-12 cursor-pointer hover:shadow-xl rounded-full p-1" src="../../assets/icons/shopping-bag.png" alt="shopping-bag">
         </div>
         <div class="mr-10">
-            <Button :text="'Twoje Zamówienia'" />
+            <Button :text="'Twoje Zamówienia'" :href="'orders'"/>
         </div>
     </div>
     <Basket v-if="showBasket" @close="showBasket = !showBasket"/>
