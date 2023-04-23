@@ -1,6 +1,6 @@
 <template>
      <div class="absolute mt-24 flex-col justify-center w-full">
-          <div class="w-full text-center text-4xl px-3 mt-20 sticky top-24 bg-white h-28">
+          <div class="w-full text-center text-4xl px-3 mt-20 sticky top-24 bg-white h-28 z-20">
                <p class="text-lg block">Głodny? Zobacz!</p>
                <h1 class="font-bold tracking-wider block">NASZE MENU</h1>
                <span class="bg-black w-24 h-[2px] mt-2 block m-auto"></span>
