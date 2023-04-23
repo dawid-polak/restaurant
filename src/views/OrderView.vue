@@ -24,7 +24,7 @@
                     </tbody>
                </table>
           </div>
-          <h5 class="mt-5">Łączna cena: {{ dataOrder.price }} zł</h5>
+          <h5 v-if="dataOrder.price" class="mt-5">Łączna cena: {{ dataOrder.price}} zł</h5>
           <div>
                <h1 class="text-2xl text-green-500 p-5 text-center font-bold">{{ dataOrder.status }}</h1>
                <p></p>

@@ -13,7 +13,7 @@
                          <p class="font-thin text-xl">zł</p>
                     </div>
                     <div class="w-1/2 h-full flex flex-col items-center justify-center">
-                         <Button @click="$emit('close'), storeOrders.addOrder(store.products, store.calculateTotalPrice)" :text="'Zapłać'" :href="'orders'" />
+                         <Button @click="$emit('close'), storeOrders.addOrder(store.products, store.calculateTotalPrice), store.products = []" :text="'Zapłać'" :href="'orders'" />
                     </div>
                </div>
           </div>

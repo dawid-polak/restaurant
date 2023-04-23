@@ -5,7 +5,7 @@
                <h4>{{ data.price }} zł</h4>
           </div>
           <p class="font-thin text-xs p-2 max-w-[400px]">{{ data.description }}</p>
-          <div @click="store.addProduct(data.name, data.price, 1), $emit('close')" class="text-right underline pt-2 px-2 cursor-pointer">dodaj do koszyka</div>
+          <div @click="store.addProduct(data.name, data.price, 1), $emit('close')" class="text-center underline pt-2 px-2 cursor-pointer transform active:scale-75 transition-transform">dodaj do koszyka</div>
      </div>
 </template>
 

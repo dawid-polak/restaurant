@@ -5,8 +5,7 @@
           <td class="px-6 py-4">{{ data.time }}</td>
           <td class="px-6 py-4">{{ data.price }} zł</td>
           <td class="px-6 py-4 text-center">
-               <p class="px-2 inline underline cursor-pointer">status</p>
-               <p class="px-2 inline underline text-red-500 cursor-pointer">anuluj</p>
+               <p @click="goToOrder" class="px-2 inline underline cursor-pointer">status</p>
           </td>
      </tr>
 </template>
